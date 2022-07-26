@@ -8,9 +8,8 @@ class AlbumRepository @Inject constructor(
     private val albumApi: AlbumApi
 ) : BaseRepository {
 
-    override fun getAllAlbums(): List<Album> {
-//        albumApi.getApiResponse("jack+johnson", "album")
-//            .albums
-        return listOf()
+    override suspend fun getAllAlbums(): List<Album> {
+        return albumApi.getApiResponse("jack+johnson", "album")
+            .albums
     }
 }

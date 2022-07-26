@@ -1,12 +1,11 @@
 package com.example.keysoc_album_app.data.api.model
 
-import com.squareup.moshi.Json
-import com.squareup.moshi.JsonClass
+import kotlinx.serialization.SerialName
+import kotlinx.serialization.Serializable
 
-@JsonClass(generateAdapter = true)
+@Serializable
 data class ApiResponse(
-    @Json(name = "resultCount")
     val resultCount: Int,
-    @Json(name = "results")
+    @SerialName("results")
     val albums: List<Album>
 )

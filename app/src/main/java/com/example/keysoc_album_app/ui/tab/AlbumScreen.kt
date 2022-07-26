@@ -8,6 +8,6 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 @Composable
 fun AlbumScreen() {
     val albumScreenViewModel = viewModel(modelClass = AlbumScreenViewModel::class.java)
-    val getAllAlbums = albumScreenViewModel.getAllAlbums
+    val albums = albumScreenViewModel.albums
     Text(text = "Hello Album", color = Color.Black)
 }
