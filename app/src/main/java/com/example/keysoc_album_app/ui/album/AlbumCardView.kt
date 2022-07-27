@@ -6,6 +6,7 @@ import androidx.compose.material.Surface
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
+import androidx.compose.ui.Alignment.Companion.End
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
@@ -14,6 +15,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import coil.compose.rememberImagePainter
 import com.example.keysoc_album_app.data.api.model.Album
+import com.example.keysoc_album_app.ui.components.BookmarkButton
 
 @Composable
 fun AlbumCardView(album: Album) {
@@ -76,6 +78,13 @@ fun AlbumCardView(album: Album) {
                     fontSize = 12.sp,
                     textAlign = TextAlign.End
                 )
+
+                Box(
+                    modifier = Modifier
+                        .align(End)
+                ) {
+                    BookmarkButton(album)
+                }
             }
         }
     }
