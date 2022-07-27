@@ -29,14 +29,6 @@ fun AlbumScreen() {
             verticalArrangement = Arrangement.Center,
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
-            item {
-                Text(
-                    text = "Artist: Jack Johnson",
-                    fontSize = 18.sp,
-                    fontWeight = FontWeight.Bold
-                )
-            }
-
             itemsIndexed(albums) { index, album ->
                 Log.v("Index", index.toString())
                 if (album != null) {
