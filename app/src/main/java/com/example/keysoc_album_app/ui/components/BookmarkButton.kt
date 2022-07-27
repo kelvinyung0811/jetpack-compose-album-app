@@ -1,5 +1,6 @@
 package com.example.keysoc_album_app.ui.components
 
+import android.util.Log
 import androidx.compose.material.Icon
 import androidx.compose.material.IconToggleButton
 import androidx.compose.material.icons.Icons
@@ -15,8 +16,10 @@ import com.example.keysoc_album_app.data.api.model.Album
 @Composable
 fun BookmarkButton(album: Album) {
     val viewModel = viewModel(modelClass = BookmarkButtonViewModel::class.java)
-//    viewModel.checkIsBookmarked(album)
-    var isFavorite by remember { mutableStateOf(false) }
+//    var isFavorite by remember { mutableStateOf(false) }
+    viewModel.checkIsBookmarked(album = album)
+    var isFavorite = viewModel.isBookmarked.value ?: false
+    Log.v("isBookmark", viewModel.isBookmarked.value.toString())
 
     IconToggleButton(
         checked = isFavorite,

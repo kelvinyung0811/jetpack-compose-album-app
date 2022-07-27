@@ -1,5 +1,6 @@
 package com.example.keysoc_album_app.ui.tab
 
+import android.util.Log
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.wrapContentSize
@@ -23,8 +24,8 @@ import com.example.keysoc_album_app.ui.album.AlbumCardView
 
 @Composable
 fun BookmarkScreen() {
-    val bookmarkScreenViewModel = viewModel(modelClass = BookmarkScreenViewModel::class.java)
-    val state by bookmarkScreenViewModel.bookmarks.collectAsState()
+    val viewModel = viewModel(modelClass = BookmarkScreenViewModel::class.java)
+    val state by viewModel.bookmarks.collectAsState()
     Surface(
         contentColor = Color.Black
     ) {
