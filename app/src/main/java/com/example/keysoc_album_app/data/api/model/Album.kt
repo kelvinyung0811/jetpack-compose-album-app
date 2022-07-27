@@ -16,6 +16,7 @@ data class Album(
     val artworkUrl60: String,
     val collectionCensoredName: String,
     val collectionExplicitness: String,
+    @PrimaryKey(autoGenerate = false)
     val collectionId: Int,
     val collectionName: String,
     val collectionPrice: Double,
@@ -28,7 +29,5 @@ data class Album(
     val primaryGenreName: String,
     val releaseDate: String,
     val trackCount: Int,
-    val wrapperType: String,
-    @PrimaryKey(autoGenerate = false)
-    val id: Int = artistId + collectionId
+    val wrapperType: String
 )

@@ -5,5 +5,5 @@ import com.example.keysoc_album_app.data.api.model.Album
 import kotlinx.coroutines.flow.Flow
 
 interface BaseRepository {
-    fun getAllAlbums(): Flow<PagingData<Album>>
+    fun getAllAlbums(term: String, entity: String): Flow<PagingData<Album>>
 }

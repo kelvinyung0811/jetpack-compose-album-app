@@ -9,5 +9,5 @@ import javax.inject.Inject
 class AlbumScreenViewModel @Inject constructor(
     albumRepository: BaseRepository
 ) : ViewModel() {
-    val albums = albumRepository.getAllAlbums()
+    val albums = albumRepository.getAllAlbums("jack+johnson", "album")
 }

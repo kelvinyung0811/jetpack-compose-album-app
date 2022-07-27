@@ -13,7 +13,9 @@ import com.example.keysoc_album_app.data.api.model.RemoteKeys
 @OptIn(ExperimentalPagingApi::class)
 class AlbumMediator(
     private val albumApi: AlbumApi,
-    private val albumDatabase: AlbumDatabase
+    private val albumDatabase: AlbumDatabase,
+    private val term: String,
+    private val entity: String
 ) : RemoteMediator<Int, Album>() {
 
     private val albumDao = albumDatabase.albumDao()
@@ -47,7 +49,7 @@ class AlbumMediator(
                 }
             }
 
-            val response = albumApi.getApiResponse("jack+johnson", "album")
+            val response = albumApi.getApiResponse(term = term, entity = entity)
             val endOfPaginationReached = currentPage * 10 > response.resultCount
 
             val prevPage = if (currentPage == 1) null else currentPage - 1
@@ -60,7 +62,7 @@ class AlbumMediator(
                 }
                 val keys = response.albums.map { album ->
                     RemoteKeys(
-                        id = album.id.toString(),
+                        id = album.collectionId.toString(),
                         prevPage = prevPage,
                         nextPage = nextPage
                     )
@@ -78,7 +80,7 @@ class AlbumMediator(
         state: PagingState<Int, Album>
     ): RemoteKeys? {
         return state.anchorPosition?.let { position ->
-            state.closestItemToPosition(position)?.id?.let { id ->
+            state.closestItemToPosition(position)?.collectionId?.let { id ->
                 remoteKeysDao.getRemoteKeys(id = id.toString())
             }
         }
@@ -89,7 +91,7 @@ class AlbumMediator(
     ): RemoteKeys? {
         return state.pages.firstOrNull { it.data.isNotEmpty() }?.data?.firstOrNull()
             ?.let { album ->
-                remoteKeysDao.getRemoteKeys(id = album.id.toString())
+                remoteKeysDao.getRemoteKeys(id = album.collectionId.toString())
             }
     }
 
@@ -98,7 +100,7 @@ class AlbumMediator(
     ): RemoteKeys? {
         return state.pages.lastOrNull { it.data.isNotEmpty() }?.data?.lastOrNull()
             ?.let { album ->
-                remoteKeysDao.getRemoteKeys(id = album.id.toString())
+                remoteKeysDao.getRemoteKeys(id = album.collectionId.toString())
             }
     }
 
