@@ -1,8 +1,12 @@
 package com.example.keysoc_album_app.data.api.model
 
+import androidx.room.Entity
+import androidx.room.PrimaryKey
+import com.example.keysoc_album_app.util.Constants
 import kotlinx.serialization.Serializable
 
 @Serializable
+@Entity(tableName = Constants.ALBUM_TABLE)
 data class Album(
     val amgArtistId: Int? = 0,
     val artistId: Int,
@@ -24,5 +28,7 @@ data class Album(
     val primaryGenreName: String,
     val releaseDate: String,
     val trackCount: Int,
-    val wrapperType: String
+    val wrapperType: String,
+    @PrimaryKey(autoGenerate = false)
+    val id: Int = artistId + collectionId
 )

@@ -1,6 +1,7 @@
 package com.example.keysoc_album_app.di
 
 import com.example.keysoc_album_app.data.api.AlbumApi
+import com.example.keysoc_album_app.data.api.local.AlbumDatabase
 import com.example.keysoc_album_app.data.api.repository.AlbumRepository
 import com.example.keysoc_album_app.data.api.repository.BaseRepository
 import com.example.keysoc_album_app.util.Constants.BASE_URL
@@ -58,5 +59,6 @@ object NetworkingModule {
     @Provides
     fun provideAlbumRepository(
         gagApi: AlbumApi,
-    ) = AlbumRepository(gagApi) as BaseRepository
+        albumDatabase: AlbumDatabase
+    ) = AlbumRepository(gagApi, albumDatabase) as BaseRepository
 }
