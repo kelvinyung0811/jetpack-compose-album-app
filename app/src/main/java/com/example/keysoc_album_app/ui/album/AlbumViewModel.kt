@@ -16,6 +16,9 @@ class AlbumViewModel @Inject constructor(
 
     private val repository = albumRepository
 
+    val bookmark = repository.getAllBookmarkItem()
+
+
     fun handleFavButtonOnClick(album: Album, isFav: Boolean) {
         viewModelScope.launch {
             if (isFav) {
