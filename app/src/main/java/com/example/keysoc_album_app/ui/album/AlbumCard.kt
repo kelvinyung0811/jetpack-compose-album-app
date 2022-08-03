@@ -25,10 +25,11 @@ import androidx.compose.ui.unit.sp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import coil.compose.rememberImagePainter
 import com.example.keysoc_album_app.data.api.model.Album
+import com.example.keysoc_album_app.util.TestTags
 
 @Composable
 fun AlbumCard(album: Album) {
-    val viewModel = viewModel(modelClass = AlbumViewModel::class.java)
+    val viewModel = viewModel(modelClass = AlbumCardViewModel::class.java)
     val bookmark by viewModel.bookmark.observeAsState(listOf())
 
     Surface(
@@ -106,7 +107,7 @@ fun AlbumCard(album: Album) {
 }
 
 @Composable
-fun BookmarkButton(album: Album, viewModel: AlbumViewModel, isBookmarked: Boolean) {
+fun BookmarkButton(album: Album, viewModel: AlbumCardViewModel, isBookmarked: Boolean) {
     var isFavorite = isBookmarked
 
     IconToggleButton(
@@ -115,7 +116,7 @@ fun BookmarkButton(album: Album, viewModel: AlbumViewModel, isBookmarked: Boolea
             isFavorite = !isFavorite
             viewModel.handleFavButtonOnClick(album, isFavorite)
         },
-        modifier = Modifier.testTag("FavButton")
+        modifier = Modifier.testTag(TestTags.FAVOURITE_BUTTON)
     ) {
         Icon(
             tint = Color.Red,

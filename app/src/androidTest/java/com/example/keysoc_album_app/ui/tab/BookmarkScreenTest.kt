@@ -1,6 +1,5 @@
 package com.example.keysoc_album_app.ui.tab
 
-import androidx.compose.ui.test.assertIsDisplayed
 import androidx.compose.ui.test.junit4.createAndroidComposeRule
 import androidx.compose.ui.test.onNodeWithTag
 import androidx.compose.ui.test.onNodeWithText
@@ -9,6 +8,7 @@ import com.example.keysoc_album_app.MainActivity
 import com.example.keysoc_album_app.data.api.repository.MockAlbumRepository
 import com.example.keysoc_album_app.di.DatabaseModule
 import com.example.keysoc_album_app.di.NetworkingModule
+import com.example.keysoc_album_app.util.TestTags
 import dagger.hilt.android.testing.HiltAndroidRule
 import dagger.hilt.android.testing.HiltAndroidTest
 import dagger.hilt.android.testing.UninstallModules
@@ -39,7 +39,7 @@ class BookmarkScreenTest {
 
     @Test
     fun showBookmarkList() {
-        val button = composeRule.onNodeWithTag("FavButton")
+        val button = composeRule.onNodeWithTag(TestTags.FAVOURITE_BUTTON)
         button.performClick()
 
         composeRule.onNodeWithText("BOOKMARK").performClick()

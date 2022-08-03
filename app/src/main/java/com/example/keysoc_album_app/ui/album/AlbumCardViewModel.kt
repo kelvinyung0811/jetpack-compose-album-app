@@ -10,7 +10,7 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
-class AlbumViewModel @Inject constructor(
+class AlbumCardViewModel @Inject constructor(
     albumRepository: BaseRepository
 ) : ViewModel() {
 
