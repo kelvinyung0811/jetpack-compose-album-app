@@ -57,7 +57,7 @@ class AlbumMediator(
 
             albumDatabase.withTransaction {
                 if (loadType == LoadType.REFRESH) {
-                    albumDao.deleteAllGags()
+                    albumDao.deleteAllAlbum()
                     remoteKeysDao.deleteAllRemoteKeys()
                 }
                 val keys = response.albums.map { album ->
@@ -68,7 +68,7 @@ class AlbumMediator(
                     )
                 }
                 remoteKeysDao.addAllRemoteKeys(remoteKeys = keys)
-                albumDao.addGags(gag = response.albums)
+                albumDao.addAlbum(gag = response.albums)
             }
             MediatorResult.Success(endOfPaginationReached = endOfPaginationReached)
         } catch (e: Exception) {

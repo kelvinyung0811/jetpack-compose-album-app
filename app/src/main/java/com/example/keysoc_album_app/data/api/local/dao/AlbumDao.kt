@@ -10,11 +10,11 @@ import com.example.keysoc_album_app.data.api.model.Album
 @Dao
 interface AlbumDao {
     @Query("SELECT * FROM ALBUM_TABLE")
-    fun getAllGags(): PagingSource<Int, Album>
+    fun getAllAlbums(): PagingSource<Int, Album>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun addGags(gag: List<Album>)
+    suspend fun addAlbum(gag: List<Album>)
 
     @Query("DELETE FROM ALBUM_TABLE")
-    suspend fun deleteAllGags()
+    suspend fun deleteAllAlbum()
 }

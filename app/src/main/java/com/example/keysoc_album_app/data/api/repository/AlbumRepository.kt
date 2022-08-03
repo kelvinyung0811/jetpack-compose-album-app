@@ -22,7 +22,7 @@ class AlbumRepository @Inject constructor(
 
     @OptIn(ExperimentalPagingApi::class)
     override fun getAllAlbums(term: String, entity: String): Flow<PagingData<Album>> {
-        val pagingSourceFactory = { albumDatabase.albumDao().getAllGags() }
+        val pagingSourceFactory = { albumDatabase.albumDao().getAllAlbums() }
         return Pager(
             config = PagingConfig(pageSize = 10),
             remoteMediator = AlbumMediator(
