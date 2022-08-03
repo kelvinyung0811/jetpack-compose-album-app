@@ -2,7 +2,9 @@ package com.example.keysoc_album_app.ui.tab
 
 import androidx.compose.ui.test.assertIsDisplayed
 import androidx.compose.ui.test.junit4.createAndroidComposeRule
+import androidx.compose.ui.test.onNodeWithTag
 import androidx.compose.ui.test.onNodeWithText
+import androidx.compose.ui.test.performClick
 import com.example.keysoc_album_app.MainActivity
 import com.example.keysoc_album_app.data.api.repository.MockAlbumRepository
 import com.example.keysoc_album_app.di.DatabaseModule
@@ -18,8 +20,8 @@ import org.junit.Test
 @OptIn(ExperimentalSerializationApi::class)
 @HiltAndroidTest
 @UninstallModules(NetworkingModule::class, DatabaseModule::class)
-class AlbumScreenTest {
-    private lateinit var viewModel: AlbumScreenViewModel
+class BookmarkScreenTest {
+    private lateinit var viewModel: BookmarkScreenViewModel
     private lateinit var mockAlbumRepository: MockAlbumRepository
 
     @get:Rule(order = 0)
@@ -36,8 +38,14 @@ class AlbumScreenTest {
     }
 
     @Test
-    fun showAlbumList() {
-        composeRule.onNodeWithText("Artist: Jack Johnson")
-            .assertIsDisplayed()
+    fun showBookmarkList() {
+        val button = composeRule.onNodeWithTag("FavButton")
+        button.performClick()
+
+        composeRule.onNodeWithText("BOOKMARK").performClick()
+
+        // TODO: check bookmark list
+//        composeRule.onNodeWithText("Artist: Jack Johnson")
+//            .assertIsDisplayed()
     }
 }

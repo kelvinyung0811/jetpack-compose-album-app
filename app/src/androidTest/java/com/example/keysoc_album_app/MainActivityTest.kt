@@ -1,10 +1,7 @@
-package com.example.keysoc_album_app.ui.tab
+package com.example.keysoc_album_app
 
-import androidx.compose.ui.test.assertIsDisplayed
+import androidx.compose.ui.test.*
 import androidx.compose.ui.test.junit4.createAndroidComposeRule
-import androidx.compose.ui.test.onNodeWithText
-import com.example.keysoc_album_app.MainActivity
-import com.example.keysoc_album_app.data.api.repository.MockAlbumRepository
 import com.example.keysoc_album_app.di.DatabaseModule
 import com.example.keysoc_album_app.di.NetworkingModule
 import dagger.hilt.android.testing.HiltAndroidRule
@@ -15,12 +12,11 @@ import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
 
+
 @OptIn(ExperimentalSerializationApi::class)
 @HiltAndroidTest
 @UninstallModules(NetworkingModule::class, DatabaseModule::class)
-class AlbumScreenTest {
-    private lateinit var viewModel: AlbumScreenViewModel
-    private lateinit var mockAlbumRepository: MockAlbumRepository
+class MainActivityTest {
 
     @get:Rule(order = 0)
     val hiltRule = HiltAndroidRule(this)
@@ -28,16 +24,31 @@ class AlbumScreenTest {
     @get:Rule(order = 1)
     val composeRule = createAndroidComposeRule<MainActivity>()
 
-
     @Before
     fun setup() {
-        mockAlbumRepository = MockAlbumRepository()
         hiltRule.inject()
     }
 
     @Test
-    fun showAlbumList() {
-        composeRule.onNodeWithText("Artist: Jack Johnson")
-            .assertIsDisplayed()
+    fun displayTab() {
+        composeRule.onNodeWithText("ALBUM").assertIsDisplayed()
+        composeRule.onNodeWithText("BOOKMARK").assertIsDisplayed()
     }
+
+    @Test
+    fun swipeToSecondTab() {
+        composeRule.onRoot().performTouchInput {
+            swipeLeft()
+        }
+        composeRule.onNodeWithText("Artist: Jack Johnson")
+            .assertIsNotDisplayed()
+    }
+
+    @Test
+    fun clickToSecondTab() {
+        composeRule.onNodeWithText("BOOKMARK").performClick()
+        composeRule.onNodeWithText("Artist: Jack Johnson")
+            .assertIsNotDisplayed()
+    }
+
 }
