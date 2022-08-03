@@ -13,7 +13,7 @@ interface AlbumDao {
     fun getAllAlbums(): PagingSource<Int, Album>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun addAlbum(gag: List<Album>)
+    suspend fun addAlbum(album: List<Album>)
 
     @Query("DELETE FROM ALBUM_TABLE")
     suspend fun deleteAllAlbum()

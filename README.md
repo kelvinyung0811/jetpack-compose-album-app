@@ -11,10 +11,10 @@
 ## Clean Architecture:
 ### Divided into three layers:
 Presentation layer
-- Activity and view model (i.e. MainActivity.kt, Photo/Video Card UI)
+- Activity and view model (i.e. MainActivity.kt, Album Card UI)
 
 Domain layer
-- Use cases (Skipped this layer in this project since there is no business logic involved in this simple 9gag app)
+- Use cases (Skipped this layer in this project since there is no business logic involved in this album app)
 
 Data layer
 - Data Repository + Mediator class, places to decide whether we fetch the source of data

@@ -58,7 +58,7 @@ object NetworkingModule {
     @Singleton
     @Provides
     fun provideAlbumRepository(
-        gagApi: AlbumApi,
+        albumApi: AlbumApi,
         albumDatabase: AlbumDatabase
-    ) = AlbumRepository(gagApi, albumDatabase) as BaseRepository
+    ) = AlbumRepository(albumApi, albumDatabase) as BaseRepository
 }

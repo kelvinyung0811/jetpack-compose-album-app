@@ -68,7 +68,7 @@ class AlbumMediator(
                     )
                 }
                 remoteKeysDao.addAllRemoteKeys(remoteKeys = keys)
-                albumDao.addAlbum(gag = response.albums)
+                albumDao.addAlbum(album = response.albums)
             }
             MediatorResult.Success(endOfPaginationReached = endOfPaginationReached)
         } catch (e: Exception) {

@@ -84,7 +84,7 @@ class AlbumDatabaseTest {
     fun writeAndReadAlbum() = runBlocking {
         addAlbum()
         val albumResult = albumDao.getAllAlbums()
-        // TODO: check if albumResult = gag
+        // TODO: check if albumResult = album
         assertThat(albumResult).isNotNull()
     }
 
@@ -93,7 +93,7 @@ class AlbumDatabaseTest {
         addAlbum()
         albumDao.deleteAllAlbum()
         val albumResult = albumDao.getAllAlbums()
-        // TODO: check if gagResult is empty
+        // TODO: check if albumResult is empty
     }
 
     private fun addBookmark() = runBlocking {
