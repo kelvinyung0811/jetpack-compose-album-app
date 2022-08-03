@@ -1,5 +1,6 @@
 package com.example.keysoc_album_app.data.api.repository
 
+import androidx.lifecycle.LiveData
 import androidx.paging.ExperimentalPagingApi
 import androidx.paging.Pager
 import androidx.paging.PagingConfig
@@ -34,7 +35,7 @@ class AlbumRepository @Inject constructor(
         ).flow
     }
 
-    override suspend fun getAllBookmarkItem(): List<Bookmark> {
+    override fun getAllBookmarkItem(): LiveData<List<Bookmark>> {
         return bookmarkDao.getAllBookmarkItem()
     }
 
