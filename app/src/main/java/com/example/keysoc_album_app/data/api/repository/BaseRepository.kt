@@ -7,7 +7,7 @@ import kotlinx.coroutines.flow.Flow
 
 interface BaseRepository {
     fun getAllAlbums(term: String, entity: String): Flow<PagingData<Album>>
-    suspend fun bookmark(bookmark: Bookmark)
-    suspend fun checkIfBookmarked(bookmark: Bookmark) : Boolean
-    suspend fun getBookmark() : List<Bookmark>
+    suspend fun getAllBookmarkItem(): List<Bookmark>
+    suspend fun addBookmark(bookmark: Bookmark)
+    suspend fun deleteBookmark(bookmark: Bookmark)
 }

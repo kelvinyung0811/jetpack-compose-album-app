@@ -19,8 +19,10 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.lifecycle.viewmodel.compose.viewModel
 import coil.compose.rememberImagePainter
 import com.example.keysoc_album_app.data.api.model.Album
+import com.example.keysoc_album_app.ui.tab.AlbumScreenViewModel
 
 @Composable
 fun AlbumCard(album: Album) {
@@ -97,12 +99,14 @@ fun AlbumCard(album: Album) {
 
 @Composable
 fun BookmarkButton(album: Album) {
+    val viewModel = viewModel(modelClass = AlbumViewModel::class.java)
     var isFavorite by remember { mutableStateOf(false) }
 
     IconToggleButton(
         checked = isFavorite,
         onCheckedChange = {
             isFavorite = !isFavorite
+            viewModel.handleFavButtonOnClick(album, isFavorite)
         }
     ) {
         Icon(

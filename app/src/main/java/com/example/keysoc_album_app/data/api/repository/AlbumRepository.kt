@@ -34,15 +34,15 @@ class AlbumRepository @Inject constructor(
         ).flow
     }
 
-    override suspend fun bookmark(bookmark: Bookmark) {
+    override suspend fun getAllBookmarkItem(): List<Bookmark> {
+        return bookmarkDao.getAllBookmarkItem()
+    }
+
+    override suspend fun addBookmark(bookmark: Bookmark) {
         bookmarkDao.addBookmark(bookmark)
     }
 
-    override suspend fun checkIfBookmarked(bookmark: Bookmark): Boolean {
-        return bookmarkDao.loadBookmark(bookmark.album.collectionId.toString())
-    }
-
-    override suspend fun getBookmark(): List<Bookmark> {
-        return bookmarkDao.getAllBookmark()
+    override suspend fun deleteBookmark(bookmark: Bookmark) {
+        bookmarkDao.deleteBookmark(bookmark)
     }
 }
