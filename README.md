@@ -1,5 +1,8 @@
 # album-app (Arthur: Kelvin Yung)
 A sample album app built with Jetpack Compose.
+- display albun from api call
+- pagination enabled
+- bookmark feature with cachingg mechanism
 
 # Design Pattern / Architecture
 ## MVVM:
