@@ -1,4 +1,4 @@
-# keysoc-album-app (Arthur: Kelvin Yung)
+# album-app (Arthur: Kelvin Yung)
 A sample album app built with Jetpack Compose.
 
 # Design Pattern / Architecture
